@@ -1,10 +1,12 @@
 class PersonFactory {
-  Person getPerson(
+  static Person getPerson(
       {required String gender, required int age, required num height}) {
-    if (gender == 'male') {
+    if (gender.toLowerCase() == 'male') {
       return Male(age, height);
+    } else if (gender.toLowerCase() == 'female') {
+      return Female(height, age);
     } else {
-      return Female(age, height);
+      throw Exception('Invalid gender');
     }
   }
 }
