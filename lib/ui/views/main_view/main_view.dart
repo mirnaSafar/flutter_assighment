@@ -11,12 +11,12 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  late PageController _pageController;
+class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   late TabController _tabController;
 
   @override
   void initState() {
+    _tabController = TabController(length: 3, vsync: this, initialIndex: 0);
     super.initState();
   }
 
@@ -53,6 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
         body: TabBarView(
+          controller: _tabController,
           physics: const AlwaysScrollableScrollPhysics(),
           children: [
             LoginTab(),

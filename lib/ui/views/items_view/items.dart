@@ -6,10 +6,10 @@ import 'package:assignment_test/core/utils/error.dart';
 import 'package:assignment_test/core/utils/general_utils.dart';
 import 'package:assignment_test/ui/shared/custom_widgets/custom_text.dart';
 import 'package:assignment_test/ui/shared/extensions.dart';
-import 'package:assignment_test/ui/views/items_view/item_details.dart';
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class ItemsTab extends StatefulWidget {
   const ItemsTab({Key? key}) : super(key: key);
@@ -65,9 +65,12 @@ class _ItemsTabState extends State<ItemsTab> {
                       return BlocProvider(
                         create: (context) => ItemDetailsCubit(),
                         child: InkWell(
-                          onTap: () => context.push(ItemDetailsWidget(
-                            itemID: items[index].id!,
-                          )),
+                          onTap: () =>
+                              (context.go('/item?itemId=${items[index].id!}')
+                              // context.push(ItemDetailsWidget(
+                              //   itemID: items[index].id!,
+                              // )
+                              ),
                           child: Container(
                             padding: const EdgeInsets.all(20),
                             decoration: BoxDecoration(

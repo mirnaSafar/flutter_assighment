@@ -12,9 +12,9 @@ class NetworkConfig {
       RequestType? type,
       Map<String, String>? extraHeaders}) {
     return {
-      if (needAuth)
-        "Authorization":
-            "Bearer ${SharedPrefrenceRepostory().getTokenInfo()?.accessToken ?? ''}",
+      // if (needAuth)
+      //   "Authorization":
+      //       "Bearer ${SharedPrefrenceRepostory().getTokenInfo()?.accessToken ?? ''}",
       if (type != RequestType.GET)
         "Content-Type": type == RequestType.MULTIPART
             ? "multipart/form-data"
